@@ -1,0 +1,20 @@
+{
+  "conclusion": "success",
+  "headSha": "38b7de9411ad16d165ce85be3f9a07af14c59112",
+  "jobs": [
+    {
+      "name": "bootstrap",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/sionrbot/personal-blog/actions/runs/38879428991/job/116902290670"
+    },
+    {
+      "name": "quality",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/sionrbot/personal-blog/actions/runs/38879428991/job/116903401995"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/sionrbot/personal-blog/actions/runs/38879428991"
+}

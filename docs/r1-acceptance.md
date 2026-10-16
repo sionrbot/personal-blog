@@ -75,7 +75,7 @@
 
 ## R1-02：文章文件与元数据规则
 
-事实：以 `721baf5e08966469827c40eb2bb7ef05f62771d5` 为起点，从干净 main 建立 `feat/r1-02-content-rules` 分支；任务为 [Issue 3](https://github.com/sionrbot/personal-blog/issues/3)。本阶段使用原有精确版本，新增直接依赖 `@astrojs/markdown-remark@7.3.2` 并更新唯一 pnpm 锁文件。PR 与 CI 状态在本节后续记录，不能用本地通过代替远端 quality。
+事实：以 `721baf5e08966469827c40eb2bb7ef05f62771d5` 为起点，从干净 main 建立 `feat/r1-02-content-rules` 分支；任务为 [Issue 3](https://github.com/sionrbot/personal-blog/issues/3)。本阶段使用原有精确版本，新增直接依赖 `@astrojs/markdown-remark@7.3.2` 并更新唯一 pnpm 锁文件。PR 与 CI 的实际结果见本节末尾。
 
 事实：用户提供《重读自由软件宣言：计算在谁的机器上》原稿，随后明确确认允许进入正式公开仓库、PR 及永久 Git 历史，接受所提字段且无附件。原稿位于 `src/content/posts/rereading-free-software-manifesto.md`，保持 `draft: true`、日期 `2026-10-16`。仅将首行 H1 移入 title 并补齐 Markdown 空行；保留 9 个 H2、40 个正文段落。正文主张未做事实核查，工程通过不代表文章事实通过。SHA-256、授权范围与正式输出清单见 [真实草稿记录](evidence/r1/r1-02-real-draft.json)。真实稿及其历史不复制到独立验收仓库。
 
@@ -117,4 +117,4 @@ Astro glob 会记录渲染错误后继续，因此 loader 另检查每条记录�
 
 事实：`pnpm verify:bootstrap` 的格式、lint、类型、工具链故障探针、118 项单元、42 项集成、正式构建及 Chromium/WebKit 两项测试全部通过，见[完整本地日志](evidence/r1/r1-02-verify.log)。另以独立验收仓库 base 执行 4 次合成本地构建，全部成功，见[另一 base 的结果](evidence/r1/r1-02-acceptance-base.json)；未向独立验收仓库写入真实稿。Playwright 输出独立存入 `test-results/browser`，避免清理前一阶段的内容构建证据。
 
-两轴审阅：Standards 硬性违反 0、需要修复的代码异味 0；Spec 初发现 1 项 P2，已修复并经独立真实构建复核关闭，残留 0。引用定义回归的[修复前](evidence/r1/r1-02-reference-before.log)与[修复后](evidence/r1/r1-02-reference-after.log)均保留。远端 PR 与 required quality 待提交后补充，尚未部署。
+两轴审阅：Standards 硬性违反 0、需要修复的代码异味 0；Spec 初发现 1 项 P2，已修复并经独立真实构建复核关闭，残留 0。引用定义回归的[修复前](evidence/r1/r1-02-reference-before.log)与[修复后](evidence/r1/r1-02-reference-after.log)均保留。[PR #12](https://github.com/sionrbot/personal-blog/pull/12) 的 [CI 运行](https://github.com/sionrbot/personal-blog/actions/runs/38879428991) 已在实现提交 `38b7de9411ad16d165ce85be3f9a07af14c59112` 上通过 bootstrap 和 required quality；见 [CI 状态](evidence/r1/r1-02-ci.json)与[阶段门禁日志](evidence/r1/r1-02-ci-summary.log)。本次文档收尾仍须通过同一 PR 的最新 quality 后才普通 squash 合并。未部署。
