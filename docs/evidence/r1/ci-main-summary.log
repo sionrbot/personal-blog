@@ -1,0 +1,37 @@
+bootstrap	Record runtime versions	﻿2026-10-16T08:14:29.3054644Z ##[group]Run node --version
+bootstrap	Record runtime versions	2026-10-16T08:14:29.3054843Z ^[[36;1mnode --version^[[0m
+bootstrap	Record runtime versions	2026-10-16T08:14:29.3054973Z ^[[36;1mpnpm --version^[[0m
+bootstrap	Record runtime versions	2026-10-16T08:14:29.3055313Z ^[[36;1mnode --input-type=module -e "import fs from 'node:fs'; if(process.version.slice(1)!==fs.readFileSync('.node-version','utf8').trim()) process.exit(1)"^[[0m
+bootstrap	Record runtime versions	2026-10-16T08:14:29.3266650Z shell: /usr/bin/bash -e {0}
+bootstrap	Record runtime versions	2026-10-16T08:14:29.3266795Z env:
+bootstrap	Record runtime versions	2026-10-16T08:14:29.3266912Z   ASTRO_TELEMETRY_DISABLED: 1
+bootstrap	Record runtime versions	2026-10-16T08:14:29.3267253Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+bootstrap	Record runtime versions	2026-10-16T08:14:29.3267422Z ##[endgroup]
+bootstrap	Record runtime versions	2026-10-16T08:14:29.3364328Z v24.22.0
+bootstrap	Record runtime versions	2026-10-16T08:14:29.3464918Z 12.11.2
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:07.0594507Z Linting: 11 files
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:09.6973973Z - 0 errors
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:09.6974127Z - 0 warnings
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:09.6974233Z - 0 hints
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:10.6731765Z PASS lint: Astro template (expected rule failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:11.5870878Z PASS lint: TypeScript (expected rule failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:12.1423341Z PASS lint: CSS (expected rule failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:12.7256795Z PASS lint: Astro inline CSS (expected rule failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:13.0130844Z PASS lint: article Markdown with frontmatter and H2 (expected rule failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:13.3011022Z PASS lint: engineering Markdown (expected rule failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:13.5293659Z PASS format: Astro template (mismatch failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:13.8138875Z PASS format: TypeScript (mismatch failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:14.1112721Z PASS format: CSS (mismatch failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:14.3787591Z PASS format: Astro inline CSS (mismatch failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:14.6549681Z PASS format: article Markdown (mismatch failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:14.9070056Z PASS format: engineering Markdown (mismatch failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:14.9362900Z PASS frozen install: manifest mismatch rejected with ERR_PNPM_OUTDATED_LOCKFILE
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:15.2482293Z PASS Vitest: HTML/CSS parser startup probe (not a business test)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:15:25.4598280Z   2 passed (9.2s)
+quality	Require every bootstrap check to succeed	﻿2026-10-16T08:15:32.7686376Z ##[group]Run test "$RESULT" = success
+quality	Require every bootstrap check to succeed	2026-10-16T08:15:32.7687194Z ^[[36;1mtest "$RESULT" = success^[[0m
+quality	Require every bootstrap check to succeed	2026-10-16T08:15:32.8392354Z shell: /usr/bin/bash -e {0}
+quality	Require every bootstrap check to succeed	2026-10-16T08:15:32.8393661Z env:
+quality	Require every bootstrap check to succeed	2026-10-16T08:15:32.8394332Z   ASTRO_TELEMETRY_DISABLED: 1
+quality	Require every bootstrap check to succeed	2026-10-16T08:15:32.8394961Z   RESULT: success
+quality	Require every bootstrap check to succeed	2026-10-16T08:15:32.8395554Z ##[endgroup]

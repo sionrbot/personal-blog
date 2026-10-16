@@ -1,0 +1,11 @@
+$ astro dev --host 127.0.0.1 --ignore-lock --port 63001
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Generated 0ms","label":"types","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":" astro  v7.3.8 ready in 143 ms\n┃ Local    http://127.0.0.1:63001/personal-blog/","label":"SKIP_FORMAT","level":"info"}
+{"message":"watching for file changes...","label":null,"level":"info"}
+{"message":"[200] / 7ms","label":null,"level":"info"}
+{"message":"\n update  ▶ New version of Astro available: 7.4.0\n  Run pnpm dlx @astrojs/upgrade to update\n","label":"SKIP_FORMAT","level":"warn"}
+{"message":"[200] / 1ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}

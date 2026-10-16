@@ -1,0 +1,191 @@
+{
+  "observedAt": "2026-10-16 Asia/Singapore",
+  "repositories": [
+    {
+      "repository": "sionrbot/personal-blog",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "admin": true,
+      "allowSquash": true,
+      "allowMerge": false,
+      "allowRebase": false,
+      "deleteBranchOnMerge": true,
+      "security": {
+        "secret_scanning": {
+          "status": "enabled"
+        },
+        "secret_scanning_push_protection": {
+          "status": "enabled"
+        },
+        "dependabot_security_updates": {
+          "status": "disabled"
+        },
+        "secret_scanning_non_provider_patterns": {
+          "status": "disabled"
+        },
+        "secret_scanning_validity_checks": {
+          "status": "disabled"
+        }
+      },
+      "protection": {
+        "url": "https://api.github.com/repos/sionrbot/personal-blog/branches/main/protection",
+        "required_status_checks": {
+          "url": "https://api.github.com/repos/sionrbot/personal-blog/branches/main/protection/required_status_checks",
+          "strict": true,
+          "contexts": ["quality"],
+          "contexts_url": "https://api.github.com/repos/sionrbot/personal-blog/branches/main/protection/required_status_checks/contexts",
+          "checks": [
+            {
+              "context": "quality",
+              "app_id": null
+            }
+          ]
+        },
+        "required_pull_request_reviews": {
+          "url": "https://api.github.com/repos/sionrbot/personal-blog/branches/main/protection/required_pull_request_reviews",
+          "dismiss_stale_reviews": true,
+          "require_code_owner_reviews": false,
+          "require_last_push_approval": false,
+          "required_approving_review_count": 0
+        },
+        "required_signatures": {
+          "url": "https://api.github.com/repos/sionrbot/personal-blog/branches/main/protection/required_signatures",
+          "enabled": false
+        },
+        "enforce_admins": {
+          "url": "https://api.github.com/repos/sionrbot/personal-blog/branches/main/protection/enforce_admins",
+          "enabled": true
+        },
+        "required_linear_history": {
+          "enabled": true
+        },
+        "allow_force_pushes": {
+          "enabled": false
+        },
+        "allow_deletions": {
+          "enabled": false
+        },
+        "block_creations": {
+          "enabled": false
+        },
+        "required_conversation_resolution": {
+          "enabled": true
+        },
+        "lock_branch": {
+          "enabled": false
+        },
+        "allow_fork_syncing": {
+          "enabled": false
+        }
+      },
+      "actionsPermissions": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": false
+      },
+      "retention": {
+        "days": 30,
+        "maximum_allowed_days": 90
+      },
+      "dependabotAlerts": {
+        "enabled": true,
+        "method": "GET",
+        "endpoint": "https://api.github.com/repos/sionrbot/personal-blog/vulnerability-alerts",
+        "httpStatus": 204,
+        "observedAt": "2026-10-16T08:24:19Z"
+      }
+    },
+    {
+      "repository": "sionrbot/personal-blog-acceptance",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "admin": true,
+      "allowSquash": true,
+      "allowMerge": false,
+      "allowRebase": false,
+      "deleteBranchOnMerge": true,
+      "security": {
+        "secret_scanning": {
+          "status": "enabled"
+        },
+        "secret_scanning_push_protection": {
+          "status": "enabled"
+        },
+        "dependabot_security_updates": {
+          "status": "disabled"
+        },
+        "secret_scanning_non_provider_patterns": {
+          "status": "disabled"
+        },
+        "secret_scanning_validity_checks": {
+          "status": "disabled"
+        }
+      },
+      "protection": {
+        "url": "https://api.github.com/repos/sionrbot/personal-blog-acceptance/branches/main/protection",
+        "required_status_checks": {
+          "url": "https://api.github.com/repos/sionrbot/personal-blog-acceptance/branches/main/protection/required_status_checks",
+          "strict": true,
+          "contexts": ["quality"],
+          "contexts_url": "https://api.github.com/repos/sionrbot/personal-blog-acceptance/branches/main/protection/required_status_checks/contexts",
+          "checks": [
+            {
+              "context": "quality",
+              "app_id": null
+            }
+          ]
+        },
+        "required_pull_request_reviews": {
+          "url": "https://api.github.com/repos/sionrbot/personal-blog-acceptance/branches/main/protection/required_pull_request_reviews",
+          "dismiss_stale_reviews": true,
+          "require_code_owner_reviews": false,
+          "require_last_push_approval": false,
+          "required_approving_review_count": 0
+        },
+        "required_signatures": {
+          "url": "https://api.github.com/repos/sionrbot/personal-blog-acceptance/branches/main/protection/required_signatures",
+          "enabled": false
+        },
+        "enforce_admins": {
+          "url": "https://api.github.com/repos/sionrbot/personal-blog-acceptance/branches/main/protection/enforce_admins",
+          "enabled": true
+        },
+        "required_linear_history": {
+          "enabled": true
+        },
+        "allow_force_pushes": {
+          "enabled": false
+        },
+        "allow_deletions": {
+          "enabled": false
+        },
+        "block_creations": {
+          "enabled": false
+        },
+        "required_conversation_resolution": {
+          "enabled": true
+        },
+        "lock_branch": {
+          "enabled": false
+        },
+        "allow_fork_syncing": {
+          "enabled": false
+        }
+      },
+      "actionsPermissions": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": false
+      },
+      "retention": {
+        "days": 30,
+        "maximum_allowed_days": 90
+      },
+      "dependabotAlerts": {
+        "enabled": true,
+        "method": "GET",
+        "endpoint": "https://api.github.com/repos/sionrbot/personal-blog-acceptance/vulnerability-alerts",
+        "httpStatus": 204,
+        "observedAt": "2026-10-16T08:24:19Z"
+      }
+    }
+  ]
+}

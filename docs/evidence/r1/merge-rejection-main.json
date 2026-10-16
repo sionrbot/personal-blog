@@ -1,0 +1,5 @@
+{
+  "exitCode": 1,
+  "stdout": "{\"message\":\"Required status check \\\"quality\\\" is failing.\",\"documentation_url\":\"https://docs.github.com/articles/about-protected-branches\",\"status\":\"405\"}",
+  "stderr": "gh: Required status check \"quality\" is failing. (HTTP 405)\n"
+}

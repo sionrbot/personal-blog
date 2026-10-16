@@ -1,0 +1,10 @@
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:16:41.4823714Z   ^[[2m17:3^[[22m  ^[[31m^[[31m✖^[[39m  Unknown property "unknown-probe-property"  ^[[2mproperty-no-unknown^[[22m
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T08:16:41.4824707Z ^[[31m✖^[[39m 1 problem (^[[31m1 error^[[39m, ^[[33m0 warnings^[[39m)
+quality	Require every bootstrap check to succeed	﻿2026-10-16T08:16:48.3488242Z ##[group]Run test "$RESULT" = success
+quality	Require every bootstrap check to succeed	2026-10-16T08:16:48.3489102Z ^[[36;1mtest "$RESULT" = success^[[0m
+quality	Require every bootstrap check to succeed	2026-10-16T08:16:48.4480227Z shell: /usr/bin/bash -e {0}
+quality	Require every bootstrap check to succeed	2026-10-16T08:16:48.4481461Z env:
+quality	Require every bootstrap check to succeed	2026-10-16T08:16:48.4482063Z   ASTRO_TELEMETRY_DISABLED: 1
+quality	Require every bootstrap check to succeed	2026-10-16T08:16:48.4482805Z   RESULT: failure
+quality	Require every bootstrap check to succeed	2026-10-16T08:16:48.4483402Z ##[endgroup]
+quality	Require every bootstrap check to succeed	2026-10-16T08:16:48.4869890Z ##[error]Process completed with exit code 1.

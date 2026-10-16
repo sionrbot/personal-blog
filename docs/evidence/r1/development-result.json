@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-16",
+  "source": "1b2cfd228548b0e10c209b8a411de136d5b5dcff",
+  "browser": "156.0.8078.4",
+  "engine": "Chromium",
+  "node": "v24.22.0",
+  "url": "http://127.0.0.1:63001/personal-blog/",
+  "initialHeading": "Sion 的博客",
+  "updatedText": "R1-01 开发更新验收：修改已出现在浏览器。",
+  "reloadedManually": false,
+  "result": "passed",
+  "isolation": "independent clean clone; original checkout untouched"
+}
