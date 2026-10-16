@@ -25,6 +25,7 @@ const port = process.env.BOOTSTRAP_PREVIEW_PORT;
 
 export default defineConfig({
   testDir: './tests/bootstrap',
+  outputDir: './test-results/browser',
   testMatch: '*.spec.ts',
   timeout: 30_000,
   expect: { timeout: 5_000 },

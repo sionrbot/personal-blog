@@ -40,7 +40,8 @@ export default function remarkPosts({ base }) {
     let previousDepth = 1;
     const definitions = new Map();
     function visit(node) {
-      if (node.type === 'definition')
+      // CommonMark uses the first matching reference definition, not the last.
+      if (node.type === 'definition' && !definitions.has(node.identifier))
         definitions.set(node.identifier, node.url);
       for (const child of node.children ?? []) visit(child);
     }

@@ -14,6 +14,7 @@ export default defineConfig({
   site: 'https://sionrbot.github.io',
   base: bases[repository],
   output: 'static',
+  cacheDir: './.cache/astro',
   trailingSlash: 'always',
   build: { format: 'directory' },
   server: { host: '127.0.0.1' },

@@ -85,7 +85,7 @@
 
 事实：通过 Context7 核对 [Astro 7 升级说明](https://docs.astro.build/en/guides/upgrade-to/v7/) 与 [Unified 处理器接口](https://docs.astro.build/en/reference/markdown-processors/unified/)，并核对本地 Astro 7.3.8 配置类型与 glob 源码。配置显式使用 `markdown.processor: unified({ remarkPlugins: ... })`；URL helper 与 remark 使用同一 base 添加规则。插件检查正文标题、原始 HTML 与输入 URL 写法，转换普通/引用式链接及本地图片。正式 HTML/片段/CSS/srcset 存在性和草稿目标检查、附件归属与复制仍留在后续阶段。
 
-Astro glob 会记录渲染错误后继续，因此 loader 另检查每条记录确实有 rendered 结果，防止非法草稿正文只打印错误却构建成功。真实负例证明该防御生效。构建包装器调用锁定 Astro CLI；通过 `pnpm build` 进入时仍由项目 pnpm 严格检查依赖。临时副本复用只读依赖，独立保存内容、`.astro`、`.cache/vite` 与 dist，不调用包管理器安装、不拷贝真实文章，finally 清理副本。
+Astro glob 会记录渲染错误后继续，因此 loader 另检查每条记录确实有 rendered 结果，防止非法草稿正文只打印错误却构建成功。真实负例证明该防御生效。构建包装器调用锁定 Astro CLI；通过 `pnpm build` 进入时仍由项目 pnpm 严格检查依赖。临时副本复用只读依赖，独立保存内容、`.astro`、`.cache/astro`、`.cache/vite` 与 dist，不调用包管理器安装、不拷贝真实文章，finally 清理副本。
 
 ### 逐项结果
 
@@ -95,9 +95,9 @@ Astro glob 会记录渲染错误后继续，因此 loader 另检查每条记录�
 | R1-02-A02 默认不公开 | 实际模板为 draft:true；未填写模板失败，填写后的合成模板成功；缺少 draft 与字符串 false 都被实际 schema 拒绝。                                                                                                                                        | 通过 |
 | R1-02-A03 地址稳定   | 隔离合成 route 两次真实构建，只改 title，`dist/posts/leap-post/index.html` 和 `/personal-blog/posts/leap-post/` 不变，HTML title 更新。正式文章页尚未实现，此结果不冒充 R1-03。                                                                      | 通过 |
 | R1-02-A04 边界数据   | 单元覆盖重复记录、命名与完整公历边界；真实构建拒绝非法扩展名、大小写、隐藏文件、子目录、文件及目录符号链接和错误日期。合法 2000/2024 闰日成功；UTC、Asia/Singapore、America/Los_Angeles 三个独立构建中 2024-02-29 原样输出，未来日期不触发定时发布。 | 通过 |
-| R1-02-A05 真实管线   | 41 项构建集成测试实际执行 43 次构建：5 次预期成功、38 次预期失败；每个失败都断言预期文件/字段或正文诊断，不只断言退出码。                                                                                                                            | 通过 |
+| R1-02-A05 真实管线   | 42 项构建集成测试实际执行 44 次构建：5 次预期成功、39 次预期失败；每个失败都断言预期文件/字段或正文诊断，不只断言退出码。                                                                                                                            | 通过 |
 
-单元测试 118 项通过。构建明细见 [43 次构建原始结果](evidence/r1/r1-02-builds.json)，用例代码在 `tests/unit/`、`tests/integration/content.test.ts`，合成 fixture 位于 `tests/fixtures/content/`。重复 id 使用内存重复记录测试，没有伪造同名磁盘文件。生产源码中没有测试文章路由或 collection JSON 端点。
+单元测试 118 项通过。构建明细见 [44 次构建原始结果](evidence/r1/r1-02-builds.json)，用例代码在 `tests/unit/`、`tests/integration/content.test.ts`，合成 fixture 位于 `tests/fixtures/content/`。重复 id 使用内存重复记录测试，没有伪造同名磁盘文件。生产源码中没有测试文章路由或 collection JSON 端点。
 
 ### 故障与修正记录
 
@@ -105,8 +105,16 @@ Astro glob 会记录渲染错误后继续，因此 loader 另检查每条记录�
 
 第一次本地临时人工预览误经 pnpm 自动安装入口，生成了任务临时 store，使后续 lint 扫描到第三方 Markdown 而失败；清理该任务生成的忽略缓存后重新执行阶段门禁，没有扩大 lint 豁免。正式构建脚本现直接使用已安装 Astro CLI，避免测试副本发生安装。人工探针页首次缺少 charset 导致中文乱码；修正测试页面 UTF-8/viewport 后实际 Chrome/Safari 中正常。正式首页原有 charset 未受影响。
 
+审阅发现一个 P2 问题：重复引用定义的校验采用最后一个定义，但 Markdown 渲染采用第一个定义，可能漏过远程图片。已改为首定义优先并增加真实构建回归。回归同时暴露 Astro 默认内容缓存在共享的 `node_modules/.astro` 中；现显式设置独立 `.cache/astro`，每次构建清理，避免旧渲染结果掩盖插件改动。修复后的目标回归通过；最终完整结果见本节证据。
+
 ### 真实浏览器补充与阶段边界
 
 事实：在本地忽略副本中，用真实草稿和测试专用路由检查实际 Chrome 155.0.8059.82、Safari 27.0.1 的 Markdown 渲染。Chrome 页面 200% 缩放、两者在 100% 页面缩放下将 html font-size 从 16px 加倍到 32px，正文均继承 32px，截图无裁剪重叠，scrollWidth 等于 clientWidth。Safari 原生文字缩放相邻档位实际为 207.36%（33.177601px），如实记录而非精确 200%。Chrome Tab 到达有效“本文”链接。详见 [浏览器环境与尺寸](evidence/r1/r1-02-browser.json)、[Chrome 页面放大](evidence/r1/r1-02-chrome-200.png)、[Chrome 字号加倍](evidence/r1/r1-02-chrome-font-200.png)、[Safari 文字放大](evidence/r1/r1-02-safari-text-207.png)、[Safari 字号加倍](evidence/r1/r1-02-safari-font-200.png)。
 
 此补充只验证本次处理器与真实正文，不是正式阅读设计或完整 R1-05 验收；Safari 键盘、320/768/1440 全矩阵及其他排版材料继续留待对应阶段。当前正式 build 只输出最小首页，无文章正文、Markdown 原稿或文章路由；这不替代 R1-06 完整草稿/附件隔离验收。未创建生产部署，未运行线上冒烟，也未把 R1-03 至 R1-08 勾选通过。本阶段实际本地写作检查步骤已记入 [操作记录](runbooks/publishing.md)。
+
+### 最终阶段门禁与审阅
+
+事实：`pnpm verify:bootstrap` 的格式、lint、类型、工具链故障探针、118 项单元、42 项集成、正式构建及 Chromium/WebKit 两项测试全部通过，见[完整本地日志](evidence/r1/r1-02-verify.log)。另以独立验收仓库 base 执行 4 次合成本地构建，全部成功，见[另一 base 的结果](evidence/r1/r1-02-acceptance-base.json)；未向独立验收仓库写入真实稿。Playwright 输出独立存入 `test-results/browser`，避免清理前一阶段的内容构建证据。
+
+两轴审阅：Standards 硬性违反 0、需要修复的代码异味 0；Spec 初发现 1 项 P2，已修复并经独立真实构建复核关闭，残留 0。引用定义回归的[修复前](evidence/r1/r1-02-reference-before.log)与[修复后](evidence/r1/r1-02-reference-after.log)均保留。远端 PR 与 required quality 待提交后补充，尚未部署。

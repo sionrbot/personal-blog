@@ -1,0 +1,93 @@
+$ node scripts/verify-bootstrap.mjs
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+$ pnpm lint:code && pnpm lint:css && pnpm lint:md
+$ eslint .
+$ stylelint "src/**/*.{css,astro}"
+$ markdownlint-cli2
+markdownlint-cli2 v0.23.3 (markdownlint v0.41.1)
+Finding: **/*.md .github/**/*.md !node_modules/** !.tools/** !dist/** !.astro/** !.cache/** !test-results/** !playwright-report/**
+Linting: 15 files
+Summary: 0 issues in 0 files
+$ astro check
+17:15:54 [content] Syncing content
+17:15:54 [content] Synced content
+17:15:54 [types] Generated 214ms
+17:15:54 [check] Getting diagnostics for Astro files in <project>...
+Result (20 files): 
+- 0 errors
+- 0 warnings
+- 0 hints
+
+$ node scripts/test-toolchain.mjs
+PASS lint: Astro template (expected rule failed; correction passed)
+PASS lint: TypeScript (expected rule failed; correction passed)
+PASS lint: CSS (expected rule failed; correction passed)
+PASS lint: Astro inline CSS (expected rule failed; correction passed)
+PASS lint: article Markdown with frontmatter and H2 (expected rule failed; correction passed)
+PASS lint: engineering Markdown (expected rule failed; correction passed)
+PASS format: Astro template (mismatch failed; correction passed)
+PASS format: TypeScript (mismatch failed; correction passed)
+PASS format: CSS (mismatch failed; correction passed)
+PASS format: Astro inline CSS (mismatch failed; correction passed)
+PASS format: article Markdown (mismatch failed; correction passed)
+PASS format: engineering Markdown (mismatch failed; correction passed)
+PASS frozen install: manifest mismatch rejected with ERR_PNPM_OUTDATED_LOCKFILE
+PASS Vitest: HTML/CSS parser startup probe (not a business test)
+$ vitest run tests/unit
+
+ RUN  v5.0.4 <project>
+
+
+ Test Files  2 passed (2)
+      Tests  118 passed (118)
+   Start at  17:16:00
+   Duration  270ms (tests 82%, import 12%, transform 5%, worker 1%)
+
+$ vitest run tests/integration
+
+ RUN  v5.0.4 <project>
+
+
+ Test Files  1 passed (1)
+      Tests  42 passed (42)
+   Start at  17:16:01
+   Duration  29.90s (tests 100%)
+
+$ node scripts/build.mjs
+17:16:31 [content] Syncing content
+17:16:31 [content] Synced content
+17:16:31 [types] Generated 273ms
+17:16:31 [build] output: "static"
+17:16:31 [build] mode: "static"
+17:16:31 [build] directory: <project>/dist/
+17:16:31 [build] Collecting build info...
+17:16:31 [build] ✓ Completed in 287ms.
+17:16:31 [build] Building static entrypoints...
+17:16:32 [vite] ✓ built in 55ms
+17:16:32 [vite] ✓ built in 6ms
+17:16:32 [build] Rearranging server assets...
+
+ generating static routes 
+17:16:32   ├─ /index.html (+6ms) 
+17:16:32 ✓ Completed in 12ms.
+
+17:16:32 [build] ✓ Completed in 89ms.
+17:16:32 [build] 1 page(s) built in 377ms
+17:16:32 [build] Complete!
+$ playwright test
+[WebServer] $ astro preview --host 127.0.0.1 --ignore-lock --port 49498
+[WebServer] (node:42763) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:42772) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/bootstrap/home.spec.ts:3:1 › built minimal homepage is readable and styled at its project base (215ms)
+(node:42777) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 [webkit] › tests/bootstrap/home.spec.ts:3:1 › built minimal homepage is readable and styled at its project base (618ms)
+
+  2 passed (2.7s)

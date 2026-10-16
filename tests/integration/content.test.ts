@@ -306,6 +306,11 @@ test.each([
 );
 
 test.each([
+  [
+    'duplicate-image-reference',
+    '\n![probe][photo]\n\n[photo]: https://example.com/tracker.png\n[photo]: /shared/local.png\n',
+    'Unsupported Markdown URL',
+  ],
   ['raw-html', '\n<div>raw HTML</div>\n', 'Raw HTML'],
   ['h1', '\n# Heading\n', 'headings'],
   ['relative-link', '\n[bad](./other.md)\n', 'Invalid URL path'],
