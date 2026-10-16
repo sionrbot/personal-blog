@@ -1,0 +1,49 @@
+
+ RUN  v5.0.4 <project>
+
+ ❯ tests/integration/content.test.ts (42 tests | 1 failed | 41 skipped) 1067ms
+   × invalid draft body cannot pass through swallowed render errors: duplicate-image-reference 1066ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/content.test.ts > invalid draft body cannot pass through swallowed render errors: duplicate-image-reference
+AssertionError: 09:08:48 [content] Syncing content
+09:08:48 [content] Synced content
+09:08:48 [types] Generated 306ms
+09:08:48 [build] output: "static"
+09:08:48 [build] mode: "static"
+09:08:48 [build] directory: /private<isolated-project>/dist/
+09:08:48 [build] Collecting build info...
+09:08:48 [build] ✓ Completed in 321ms.
+09:08:48 [build] Building static entrypoints...
+09:08:48 [vite] ✓ built in 75ms
+09:08:48 [vite] ✓ built in 7ms
+09:08:48 [build] Rearranging server assets...
+
+ generating static routes 
+09:08:48   ├─ /index.html (+5ms) 
+09:08:48 ✓ Completed in 12ms.
+
+09:08:48 [build] ✓ Completed in 108ms.
+09:08:48 [build] 1 page(s) built in 430ms
+09:08:48 [build] Complete!
+
+: expected +0 not to be +0 // Object.is equality
+ ❯ tests/integration/content.test.ts:329:48
+    327|       );
+    328|       const result = build(directory, name);
+    329|       expect(result.status, result.output).not.toBe(0);
+       |                                                ^
+    330|       expect(result.output).toContain('broken-body.md');
+    331|       expect(result.output).toContain(diagnostic);
+ ❯ isolated tests/integration/content.test.ts:50:5
+ ❯ tests/integration/content.test.ts:322:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 41 skipped (42)
+   Start at  17:08:47
+   Duration  1.16s (tests 97%, transform 2%, import 1%)
+

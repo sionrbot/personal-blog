@@ -1,11 +1,13 @@
 import { spawnSync } from 'node:child_process';
 
-// This is the R1-01 gate; the complete R1-06 verify is not implemented yet.
+// Stage gate through R1-02; the complete R1-06 verify is not implemented yet.
 for (const command of [
   'format:check',
   'lint',
   'check',
   'test:toolchain',
+  'test:unit',
+  'test:integration',
   'build',
   'test:e2e:bootstrap',
 ]) {

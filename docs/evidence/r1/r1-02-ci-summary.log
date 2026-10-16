@@ -1,0 +1,139 @@
+bootstrap	Run pnpm verify:bootstrap	﻿2026-10-16T09:18:28.9002829Z ##[group]Run pnpm verify:bootstrap
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:28.9003187Z pnpm verify:bootstrap
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:28.9067235Z shell: /usr/bin/bash -e {0}
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:28.9067502Z env:
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:28.9067703Z   ASTRO_TELEMETRY_DISABLED: 1
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:28.9068007Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:28.9068329Z ##[endgroup]
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:28.9325189Z $ node scripts/verify-bootstrap.mjs
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:28.9755223Z $ prettier --check .
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:29.0658743Z Checking formatting...
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:30.4352170Z All matched files use Prettier code style!
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:30.5076649Z $ pnpm lint:code && pnpm lint:css && pnpm lint:md
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:30.5302642Z $ eslint .
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:32.1345141Z $ stylelint "src/**/*.{css,astro}"
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:32.7029520Z $ markdownlint-cli2
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:32.9181167Z markdownlint-cli2 v0.23.3 (markdownlint v0.41.1)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:32.9183902Z Finding: **/*.md .github/**/*.md !node_modules/** !.tools/** !dist/** !.astro/** !.cache/** !test-results/** !playwright-report/**
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:32.9371031Z Linting: 15 files
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:33.1851291Z Summary: 0 issues in 0 files
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:33.2183669Z $ astro check
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:35.2686278Z 09:18:35 [content] Syncing content
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:35.3936987Z 09:18:35 [content] Synced content
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:35.3951324Z 09:18:35 [types] Generated 724ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:35.4018805Z 09:18:35 [check] Getting diagnostics for Astro files in /home/runner/work/personal-blog/personal-blog...
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:38.8616797Z Result (20 files): 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:38.8617306Z - 0 errors
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:38.8617713Z - 0 warnings
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:38.8618065Z - 0 hints
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:38.8618249Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:38.9446113Z $ node scripts/test-toolchain.mjs
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:40.5922555Z PASS lint: Astro template (expected rule failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:42.1979118Z PASS lint: TypeScript (expected rule failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:43.2242582Z PASS lint: CSS (expected rule failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:44.3182977Z PASS lint: Astro inline CSS (expected rule failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:44.8298293Z PASS lint: article Markdown with frontmatter and H2 (expected rule failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:45.3432791Z PASS lint: engineering Markdown (expected rule failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:45.7441538Z PASS format: Astro template (mismatch failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:46.2070215Z PASS format: TypeScript (mismatch failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:46.6363416Z PASS format: CSS (mismatch failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:47.0741524Z PASS format: Astro inline CSS (mismatch failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:47.5451449Z PASS format: article Markdown (mismatch failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:47.9793124Z PASS format: engineering Markdown (mismatch failed; correction passed)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:48.0289125Z PASS frozen install: manifest mismatch rejected with ERR_PNPM_OUTDATED_LOCKFILE
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:48.5231313Z PASS Vitest: HTML/CSS parser startup probe (not a business test)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:48.5482642Z $ vitest run tests/unit
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:48.8287710Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:48.8295550Z  RUN  v5.0.4 /home/runner/work/personal-blog/personal-blog
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:48.8296264Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:49.0469971Z  ✓ tests/unit/urls.test.ts (56 tests) 20ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:49.5341114Z  ✓ tests/unit/posts.test.ts (62 tests) 455ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:49.5413185Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:49.5418360Z  Test Files  2 passed (2)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:49.5419904Z       Tests  118 passed (118)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:49.5420782Z    Start at  09:18:48
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:49.5426873Z    Duration  703ms (tests 71%, import 15%, transform 13%, worker 1%)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:49.5438717Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:49.5802525Z $ vitest run tests/integration
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:49.8684145Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:49.8685843Z  RUN  v5.0.4 /home/runner/work/personal-blog/personal-blog
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:18:49.8686715Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7266280Z  ✓ tests/integration/content.test.ts (42 tests) 77690ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7269902Z    ✓ real loader, rendered URLs and date-only in UTC 4256ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7271514Z    ✓ real loader, rendered URLs and date-only in Asia/Singapore 2119ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7273091Z    ✓ real loader, rendered URLs and date-only in America/Los_Angeles 2112ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7286719Z    ✓ real build rejects missing-title at the expected file and field 1722ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7287757Z    ✓ real build rejects type-title at the expected file and field 1723ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7288669Z    ✓ real build rejects missing-description at the expected file and field 1721ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7289838Z    ✓ real build rejects type-description at the expected file and field 1754ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7290721Z    ✓ real build rejects missing-pubDate at the expected file and field 1741ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7291556Z    ✓ real build rejects type-pubDate at the expected file and field 1702ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7292378Z    ✓ real build rejects missing-draft at the expected file and field 1732ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7293199Z    ✓ real build rejects type-draft at the expected file and field 1765ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7294399Z    ✓ real build rejects blank-title at the expected file and field 1767ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7300287Z    ✓ real build rejects blank-description at the expected file and field 1798ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7301223Z    ✓ real build rejects date-2026-02-30 at the expected file and field 1745ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7302085Z    ✓ real build rejects date-2025-02-29 at the expected file and field 1761ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7302908Z    ✓ real build rejects date-1900-02-29 at the expected file and field 1746ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7304038Z    ✓ real build rejects date-0000-01-01 at the expected file and field 1754ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7305327Z    ✓ real build rejects date-2026-13-01 at the expected file and field 1722ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7306679Z    ✓ real build rejects date-2026-00-01 at the expected file and field 1736ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7307508Z    ✓ real build rejects date-2026-01-00 at the expected file and field 1743ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7308316Z    ✓ real build rejects date-2026-04-31 at the expected file and field 1734ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7309130Z    ✓ real build rejects date-2026-1-01 at the expected file and field 1717ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7310010Z    ✓ real build rejects date-2026-10-16T00-00-00Z at the expected file and field 1723ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7310859Z    ✓ real build rejects date-2026-10-16 at the expected file and field 1706ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7311962Z    ✓ real build rejects unknown-key at the expected file and field 1690ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7312986Z    ✓ real build rejects slug-override at the expected file and field 1697ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7315084Z    ✓ real build rejects invalid-draft at the expected file and field 1718ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7316549Z    ✓ real build rejects directory entry Upper.md 1699ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7317764Z    ✓ real build rejects directory entry wrong.MD 1673ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7319008Z    ✓ real build rejects directory entry two--hyphens.md 1691ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7320228Z    ✓ real build rejects directory entry .hidden.md 1684ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7321517Z    ✓ real build rejects directory entry readme.txt 1663ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7322681Z    ✓ real build rejects directory entry nested 1686ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7324070Z    ✓ real build rejects directory entry linked.md 1696ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7325671Z    ✓ invalid draft body cannot pass through swallowed render errors: duplicate-image-reference 1731ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7327533Z    ✓ invalid draft body cannot pass through swallowed render errors: raw-html 1711ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7329194Z    ✓ invalid draft body cannot pass through swallowed render errors: h1 1702ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7330829Z    ✓ invalid draft body cannot pass through swallowed render errors: relative-link 1745ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7332872Z    ✓ invalid draft body cannot pass through swallowed render errors: prefixed-link 1739ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7334811Z    ✓ invalid draft body cannot pass through swallowed render errors: script-link 1728ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7336529Z    ✓ template requires author fields; completed template stays a validated draft 3707ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7338143Z    ✓ real build rejects a symlink used as the posts directory 1726ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7338882Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7339976Z  Test Files  1 passed (1)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7341505Z       Tests  42 passed (42)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7342413Z    Start at  09:18:49
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7343538Z    Duration  77.85s (tests 100%)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7355581Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:07.7673337Z $ node scripts/build.mjs
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.3975586Z 09:20:09 [content] Syncing content
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.5281558Z 09:20:09 [content] Synced content
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.5297045Z 09:20:09 [types] Generated 679ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.5300606Z 09:20:09 [build] output: "static"
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.5301519Z 09:20:09 [build] mode: "static"
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.5302620Z 09:20:09 [build] directory: /home/runner/work/personal-blog/personal-blog/dist/
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.5303540Z 09:20:09 [build] Collecting build info...
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.5305105Z 09:20:09 [build] ✓ Completed in 718ms.
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.5316871Z 09:20:09 [build] Building static entrypoints...
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.7278626Z 09:20:09 [vite] ✓ built in 173ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.7456897Z 09:20:09 [vite] ✓ built in 15ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.7499387Z 09:20:09 [build] Rearranging server assets...
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.7686775Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.7687524Z  generating static routes 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.7804825Z 09:20:09   ├─ /index.html (+11ms) 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.7806041Z 09:20:09 ✓ Completed in 30ms.
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.7806537Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.7818741Z 09:20:09 [build] ✓ Completed in 250ms.
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.7822211Z 09:20:09 [build] 1 page(s) built in 969ms
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.7822969Z 09:20:09 [build] Complete!
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:09.8276170Z $ playwright test
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:10.9142879Z [WebServer] $ astro preview --host 127.0.0.1 --ignore-lock --port 35905
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:12.7964234Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:12.7965176Z Running 2 tests using 1 worker
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:12.7965572Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:13.7044364Z   ✓  1 [chromium] › tests/bootstrap/home.spec.ts:3:1 › built minimal homepage is readable and styled at its project base (285ms)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:16.8357771Z   ✓  2 [webkit] › tests/bootstrap/home.spec.ts:3:1 › built minimal homepage is readable and styled at its project base (2.0s)
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:16.9521885Z 
+bootstrap	Run pnpm verify:bootstrap	2026-10-16T09:20:16.9527689Z   2 passed (6.5s)

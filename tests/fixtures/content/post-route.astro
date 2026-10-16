@@ -1,0 +1,32 @@
+---
+// Test-only route. Copied into an isolated project, never the real site's pages.
+import { getCollection, render } from 'astro:content';
+import { isPublished } from '../../../src/lib/posts';
+import { postUrl } from '../../../src/lib/urls';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.filter(isPublished).map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{post.data.title}</title>
+  </head>
+  <body>
+    <h1>{post.data.title}</h1>
+    <time>{post.data.pubDate}</time>
+    <a data-post-url href={postUrl(post.id, import.meta.env.BASE_URL)}>
+      本文
+    </a>
+    <Content />
+  </body>
+</html>

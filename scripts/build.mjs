@@ -1,10 +1,14 @@
 import { rm } from 'node:fs/promises';
 import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
-for (const path of ['dist', '.astro', 'node_modules/.vite']) {
+for (const path of ['dist', '.astro', '.cache/astro', '.cache/vite']) {
   await rm(path, { recursive: true, force: true });
 }
-const result = spawnSync('pnpm', ['exec', 'astro', 'build'], {
+const cli = fileURLToPath(
+  new URL('./bin/astro.mjs', import.meta.resolve('astro/package.json')),
+);
+const result = spawnSync(process.execPath, [cli, 'build'], {
   stdio: 'inherit',
 });
 if (result.error) throw result.error;

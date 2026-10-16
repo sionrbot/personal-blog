@@ -1,0 +1,106 @@
+$ vitest run tests/integration
+
+ RUN  v5.0.4 <project>
+
+ ❯ tests/integration/content.test.ts (40 tests | 4 failed) 229238ms
+   × real loader, rendered URLs and date-only in UTC 5982ms
+   × real loader, rendered URLs and date-only in Asia/Singapore 6044ms
+   × real loader, rendered URLs and date-only in America/Los_Angeles 5063ms
+   × invalid draft body cannot pass through swallowed render errors: relative-link 5235ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/content.test.ts > real loader, rendered URLs and date-only in UTC
+ FAIL  tests/integration/content.test.ts > real loader, rendered URLs and date-only in Asia/Singapore
+ FAIL  tests/integration/content.test.ts > real loader, rendered URLs and date-only in America/Los_Angeles
+AssertionError: expected '<!DOCTYPE html><html lang="zh-CN"><he…' to contain 'href="/personal-blog/posts/leap-post/"'
+
+- Expected
++ Received
+
+- href="/personal-blog/posts/leap-post/"
++ <!DOCTYPE html><html lang="zh-CN"><head><title>合成管线样本</title></head><body><h1>合成管线样本</h1><time>2024-02-29</time><a data-post-url href="/posts/leap-post/">本文</a><h2 id="合成正文">合成正文</h2>
++ <p>此材料只用于测试，不是真实文章。</p>
++ <p><a href="/personal-blog/">首页</a>与<a href="/personal-blog/posts/future-post/#%E5%90%88%E6%88%90%E6%AD%A3%E6%96%87">另一篇文章</a>。</p>
++ <p><a href="/personal-blog/">参考式首页</a>。</p>
++ <p><img src="/personal-blog/post-assets/leap-post/probe.png" alt="合成图片"></p>
++ <p><a href="/personal-blog/post-assets/leap-post/probe.txt">合成附件</a>。</p>
++ <p><a href="/personal-blog/shared/probe.txt">共享附件</a>。</p>
++ <p><a href="https://example.com/reference">外部参考</a>。</p></body></html>
+
+ ❯ tests/integration/content.test.ts:156:22
+    154|         'https://example.com/reference',
+    155|       ]) {
+    156|         expect(html).toContain(`href="${url}"`);
+       |                      ^
+    157|       }
+    158|       expect(html).toContain(`src="${base}/post-assets/leap-post/probe…
+ ❯ isolated tests/integration/content.test.ts:50:5
+ ❯ tests/integration/content.test.ts:95:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/integration/content.test.ts > invalid draft body cannot pass through swallowed render errors: relative-link
+AssertionError: expected '08:57:17 [content] Syncing content\n\…' to contain 'Unsupported Markdown URL'
+
+- Expected
++ Received
+
+- Unsupported Markdown URL
++ 08:57:17 [content] Syncing content
++
++ [<isolated-project>/src/content/posts/broken-body.md:19:1-19:18: Failed to parse Markdown file "<isolated-project>/src/content/posts/broken-body.md":
++ Invalid URL path: ./other.md] {
++   ancestors: [
++     {
++       type: 'link',
++       title: null,
++       url: './other.md',
++       children: [Array],
++       position: [Object]
++     }
++   ],
++   cause: undefined,
++   column: 1,
++   fatal: true,
++   file: '<isolated-project>/src/content/posts/broken-body.md',
++   line: 19,
++   place: {
++     start: { line: 19, column: 1, offset: 252 },
++     end: { line: 19, column: 18, offset: 269 }
++   },
++   reason: 'Invalid URL path: ./other.md',
++   ruleId: undefined,
++   source: undefined,
++   actual: undefined,
++   expected: undefined,
++   note: undefined,
++   url: undefined
++ }
++ 08:57:17 [ERROR] [validated-posts] Error rendering broken-body.md: Failed to parse Markdown file "<isolated-project>/src/content/posts/broken-body.md":
++ Invalid URL path: ./other.md
++ Invalid post body: src/content/posts/broken-body.md
++   Stack trace:
++     at Object.load (<isolated-project>/src/lib/post-loader.ts:47:32)
++     at async #doSync (file://<project>/node_modules/.pnpm/astro@7.3.8_@astrojs+markdown-remark@7.3.2_supports-color@10.2.2__@types+node@24.19.2_yaml@2.9.1/node_modules/astro/dist/content/content-layer.js:190:3)
++
+
+ ❯ tests/integration/content.test.ts:315:29
+    313|       expect(result.status, result.output).not.toBe(0);
+    314|       expect(result.output).toContain('broken-body.md');
+    315|       expect(result.output).toContain(diagnostic);
+       |                             ^
+    316|       expect(result.output).toContain('Invalid post body');
+    317|     });
+ ❯ isolated tests/integration/content.test.ts:50:5
+ ❯ tests/integration/content.test.ts:306:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 36 passed (40)
+   Start at  16:53:46
+   Duration  229.31s (tests 100%)
+
+[ELIFECYCLE] Command failed with exit code 1.

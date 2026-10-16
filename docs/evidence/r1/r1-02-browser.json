@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-16",
+  "timezone": "Asia/Singapore",
+  "os": "macOS 27.0.1 (26A434), arm64",
+  "probe": "Ignored local copy of project; copy test-only post-route.astro into src/pages/posts/[id].astro, allow draft solely in this local probe, add visible local-only draft badge. Serve built output on 127.0.0.1:4387. Never add probe route to production source.",
+  "chrome": {
+    "version": "155.0.8059.82",
+    "charset": "UTF-8",
+    "h2Count": 9,
+    "pageZoomPercent": 200,
+    "zoomClientWidth": 490,
+    "zoomScrollWidth": 490,
+    "htmlFontProbePx": 32,
+    "bodyFontProbePx": 32,
+    "fontProbeClientWidth": 980,
+    "fontProbeScrollWidth": 980,
+    "keyboardFocus": "Tab reached 本文 link with correct project-base URL",
+    "screenshots": ["r1-02-chrome-200.png", "r1-02-chrome-font-200.png"]
+  },
+  "safari": {
+    "version": "27.0.1 (22625.1.29.11.28)",
+    "nativeTextZoomFontPx": 33.177601,
+    "nativeTextZoomPercent": 207.36000625,
+    "nativeTextZoomClientWidth": 1920,
+    "nativeTextZoomScrollWidth": 1920,
+    "htmlFontProbePx": 32,
+    "bodyFontProbePx": 32,
+    "fontProbeClientWidth": 1920,
+    "fontProbeScrollWidth": 1920,
+    "screenshots": ["r1-02-safari-text-207.png", "r1-02-safari-font-200.png"],
+    "keyboardAcceptance": "not claimed"
+  },
+  "limitations": [
+    "Temporary raw Markdown rendering, not the R1-03 production article layout.",
+    "Safari native steps reach 207.36%, not exactly 200%; actual value preserved.",
+    "R1-05 full typography/viewports/keyboard/browser acceptance remains unperformed."
+  ]
+}
