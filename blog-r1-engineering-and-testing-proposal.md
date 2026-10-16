@@ -497,7 +497,7 @@ R1 启用仓库可用的 Dependabot alerts、Secret scanning 和 push protection
 | docs/runbooks/publishing.md                        | 实际跑通的发布、撤回、恢复步骤；实施中逐步建立                     |
 | tests/unit、integration、e2e、fixtures             | 各层测试代码及隔离数据；随对应实现建立                             |
 
-本轮不搬迁两份根文档，不拆出 decisions.md 或 test-plan.md，不建立空壳 runbook，不新增 AGENTS.md。Issue 管动态任务进度；验收文件管结果；两份规范管要求。本文的表格不能当成一份已通过清单。
+本轮不搬迁两份根文档，不拆出 decisions.md 或 test-plan.md，不建立空壳 runbook。2026-10-16，经用户确认，为工程技能新增根目录 AGENTS.md 与 docs/agents/ 下的议题跟踪、分流标签和领域文档配置，替代此前“不新增 AGENTS.md”的决定；AGENTS.md 仅提供现有规范和技能配置的读取入口。Issue 管动态任务进度；验收文件管结果；两份规范管要求。本文的表格不能当成一份已通过清单。
 
 文档与相关代码在同一 PR 更新。更改已定范围或验收需说明原因；不得为掩盖实现失败降低标准。决定被替代时在本文登记新结论和原因，历史由 Git 保留，不维护多个修订稿。
 
