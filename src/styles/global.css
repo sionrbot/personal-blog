@@ -12,3 +12,7 @@ body {
 h1 {
   line-height: 1.25;
 }
+
+.gate-probe {
+  unknown-probe-property: red;
+}
