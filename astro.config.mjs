@@ -1,4 +1,6 @@
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
+import remarkPosts from './src/lib/remark-posts.mjs';
 
 const repository = process.env.GITHUB_REPOSITORY ?? 'sionrbot/personal-blog';
 const bases = {
@@ -15,4 +17,10 @@ export default defineConfig({
   trailingSlash: 'always',
   build: { format: 'directory' },
   server: { host: '127.0.0.1' },
+  vite: { cacheDir: './.cache/vite' },
+  markdown: {
+    processor: unified({
+      remarkPlugins: [[remarkPosts, { base: bases[repository] }]],
+    }),
+  },
 });

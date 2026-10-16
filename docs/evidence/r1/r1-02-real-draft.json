@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-16",
+  "timezone": "Asia/Singapore",
+  "baseline": "721baf5e08966469827c40eb2bb7ef05f62771d5",
+  "article": {
+    "path": "src/content/posts/rereading-free-software-manifesto.md",
+    "sha256": "9bbc17b8585fca21e8d954a98aa83e64c54854eb9c23a878bcd18be75bbf13fc",
+    "draft": true,
+    "pubDate": "2026-10-16",
+    "h2Count": 9,
+    "bodyParagraphs": 40,
+    "attachments": [],
+    "publicRepositoryConsent": "User explicitly confirmed original text may enter sionrbot/personal-blog, PR and permanent Git history; accepted proposed fields; no attachments.",
+    "factChecked": false
+  },
+  "productionFiles": ["index.html"],
+  "articleRoutePresent": false,
+  "markdownSourcePresent": false,
+  "articleTitlePresentInOutput": false,
+  "scope": "R1-02 real draft load and current output only; not complete R1-06 leak isolation acceptance"
+}

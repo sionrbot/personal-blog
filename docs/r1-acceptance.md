@@ -1,6 +1,6 @@
 # R1 实际验收记录
 
-执行日期：2026-10-16（Asia/Singapore）。**R1-00 与 R1-01 已通过对应验收；R1-02 至 R1-08 未实施、未验收。**本记录中的“通过”只覆盖下列编号，不表示网站已公开部署或完整 R1 已完成。
+执行日期：2026-10-16（Asia/Singapore）。**R1-00 与 R1-01 已通过对应验收；R1-02 已实现并通过下文 5 项本地内容验收；R1-03 至 R1-08 未实施、未验收。**本记录中的“通过”只覆盖下列编号，不表示网站已公开部署或完整 R1 已完成。
 
 ## 身份、环境与证据基线
 
@@ -64,11 +64,49 @@
 
 两个故障 PR 均已关闭且删除短分支，没有合入。故障提交为 `e6e3400f2084cb158df6a0bf562b336ad57b0351`；[正式 CI 失败摘要](evidence/r1/ci-failure-summary.log)确认错误来自预期 CSS 规则，而非依赖安装或权限故障。该演练证明当前普通 PR 合并门禁，不替代后续 R1-06 的所有取消/跳过/部署来源与并发演练。
 
-## 已解决问题与剩余边界
+## R1-00 / R1-01 收尾时的问题与边界
 
 - 本地沙箱曾阻止 macOS 浏览器所需 Mach IPC；取得运行时权限后，同一测试在真实 Chromium/WebKit 中通过。未将沙箱启动失败算作产品缺陷或通过。
 - Astro 7 在代理环境会自动后台启动预览；测试改用 `--ignore-lock`、动态本机端口和 Playwright 进程管理，禁止复用残留服务。
 - 首轮审阅移除了未使用的 esbuild 脚本授权，并明确直接稳定选型与上游预发行依赖的区别；后续冻结安装和全部检查已通过。
 - `.tools/`、node_modules、dist、缓存、报告、环境文件被忽略。证据中的无关本机目录已替换，原始 CI 日志仍可通过运行链接核对。
-- 仅有最小首页。文章 schema/路由、草稿与附件管线、404、完整 verify、生产部署、线上冒烟、实际 Chrome/Safari 阅读验收和更新/恢复演练均未实施，不能从本轮结果推断通过。
+- 仅有最小首页。当时文章 schema/路由、草稿与附件管线、404、完整 verify、生产部署、线上冒烟、实际 Chrome/Safari 阅读验收和更新/恢复演练均未实施，不能从本轮结果推断通过。
 - 验收使用的长期摘要、JSON 和必要截图随 Git 保存；原始 CI 日志/报告有期限。源码后续变更需重新跑对应检查，本记录不承诺任意未来版本仍通过。
+
+## R1-02：文章文件与元数据规则
+
+事实：以 `721baf5e08966469827c40eb2bb7ef05f62771d5` 为起点，从干净 main 建立 `feat/r1-02-content-rules` 分支；任务为 [Issue 3](https://github.com/sionrbot/personal-blog/issues/3)。本阶段使用原有精确版本，新增直接依赖 `@astrojs/markdown-remark@7.3.2` 并更新唯一 pnpm 锁文件。PR 与 CI 状态在本节后续记录，不能用本地通过代替远端 quality。
+
+事实：用户提供《重读自由软件宣言：计算在谁的机器上》原稿，随后明确确认允许进入正式公开仓库、PR 及永久 Git 历史，接受所提字段且无附件。原稿位于 `src/content/posts/rereading-free-software-manifesto.md`，保持 `draft: true`、日期 `2026-10-16`。仅将首行 H1 移入 title 并补齐 Markdown 空行；保留 9 个 H2、40 个正文段落。正文主张未做事实核查，工程通过不代表文章事实通过。SHA-256、授权范围与正式输出清单见 [真实草稿记录](evidence/r1/r1-02-real-draft.json)。真实稿及其历史不复制到独立验收仓库。
+
+### 实现与一手依据
+
+`src/content.config.ts` 接入 Astro glob 与严格 schema；加载前检查整个文章目录，拒绝被 glob 忽略的额外文件、子目录、隐藏文件和符号链接，文件名直接产生固定 id，加载后保留唯一性防御。日期按公历数字规则校验，保留原 date-only 字符串，不使用 Date 做时区转换。未来日期不改变 draft 发布判定。模板包含必填 `draft: true`；未填字段的模板有意无法构建。
+
+事实：通过 Context7 核对 [Astro 7 升级说明](https://docs.astro.build/en/guides/upgrade-to/v7/) 与 [Unified 处理器接口](https://docs.astro.build/en/reference/markdown-processors/unified/)，并核对本地 Astro 7.3.8 配置类型与 glob 源码。配置显式使用 `markdown.processor: unified({ remarkPlugins: ... })`；URL helper 与 remark 使用同一 base 添加规则。插件检查正文标题、原始 HTML 与输入 URL 写法，转换普通/引用式链接及本地图片。正式 HTML/片段/CSS/srcset 存在性和草稿目标检查、附件归属与复制仍留在后续阶段。
+
+Astro glob 会记录渲染错误后继续，因此 loader 另检查每条记录确实有 rendered 结果，防止非法草稿正文只打印错误却构建成功。真实负例证明该防御生效。构建包装器调用锁定 Astro CLI；通过 `pnpm build` 进入时仍由项目 pnpm 严格检查依赖。临时副本复用只读依赖，独立保存内容、`.astro`、`.cache/vite` 与 dist，不调用包管理器安装、不拷贝真实文章，finally 清理副本。
+
+### 逐项结果
+
+| 验收项               | 操作、预期与实际证据                                                                                                                                                                                                                                 | 结论 |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
+| R1-02-A01 元数据校验 | 合法合成文章与真实草稿加载成功；四字段缺失/类型错误、空白 title/description、未知键和 slug 覆盖分别导致真实构建失败，并定位目标文章与字段。                                                                                                          | 通过 |
+| R1-02-A02 默认不公开 | 实际模板为 draft:true；未填写模板失败，填写后的合成模板成功；缺少 draft 与字符串 false 都被实际 schema 拒绝。                                                                                                                                        | 通过 |
+| R1-02-A03 地址稳定   | 隔离合成 route 两次真实构建，只改 title，`dist/posts/leap-post/index.html` 和 `/personal-blog/posts/leap-post/` 不变，HTML title 更新。正式文章页尚未实现，此结果不冒充 R1-03。                                                                      | 通过 |
+| R1-02-A04 边界数据   | 单元覆盖重复记录、命名与完整公历边界；真实构建拒绝非法扩展名、大小写、隐藏文件、子目录、文件及目录符号链接和错误日期。合法 2000/2024 闰日成功；UTC、Asia/Singapore、America/Los_Angeles 三个独立构建中 2024-02-29 原样输出，未来日期不触发定时发布。 | 通过 |
+| R1-02-A05 真实管线   | 41 项构建集成测试实际执行 43 次构建：5 次预期成功、38 次预期失败；每个失败都断言预期文件/字段或正文诊断，不只断言退出码。                                                                                                                            | 通过 |
+
+单元测试 118 项通过。构建明细见 [43 次构建原始结果](evidence/r1/r1-02-builds.json)，用例代码在 `tests/unit/`、`tests/integration/content.test.ts`，合成 fixture 位于 `tests/fixtures/content/`。重复 id 使用内存重复记录测试，没有伪造同名磁盘文件。生产源码中没有测试文章路由或 collection JSON 端点。
+
+### 故障与修正记录
+
+首轮 40 项集成测试中 4 项失败、36 项通过，见 [首轮日志](evidence/r1/r1-02-integration-first.log)：测试子进程继承了 Vitest 的默认 base，测试页面 helper 生成根路径；另一个断言误写了相对链接应命中的诊断。隔离子进程的 Vite 环境、按实际 HTML 的编码片段和正确诊断断言后，重跑 41 项通过（补充目录符号链接用例）。没有删除失败用例或降低非法输入标准。
+
+第一次本地临时人工预览误经 pnpm 自动安装入口，生成了任务临时 store，使后续 lint 扫描到第三方 Markdown 而失败；清理该任务生成的忽略缓存后重新执行阶段门禁，没有扩大 lint 豁免。正式构建脚本现直接使用已安装 Astro CLI，避免测试副本发生安装。人工探针页首次缺少 charset 导致中文乱码；修正测试页面 UTF-8/viewport 后实际 Chrome/Safari 中正常。正式首页原有 charset 未受影响。
+
+### 真实浏览器补充与阶段边界
+
+事实：在本地忽略副本中，用真实草稿和测试专用路由检查实际 Chrome 155.0.8059.82、Safari 27.0.1 的 Markdown 渲染。Chrome 页面 200% 缩放、两者在 100% 页面缩放下将 html font-size 从 16px 加倍到 32px，正文均继承 32px，截图无裁剪重叠，scrollWidth 等于 clientWidth。Safari 原生文字缩放相邻档位实际为 207.36%（33.177601px），如实记录而非精确 200%。Chrome Tab 到达有效“本文”链接。详见 [浏览器环境与尺寸](evidence/r1/r1-02-browser.json)、[Chrome 页面放大](evidence/r1/r1-02-chrome-200.png)、[Chrome 字号加倍](evidence/r1/r1-02-chrome-font-200.png)、[Safari 文字放大](evidence/r1/r1-02-safari-text-207.png)、[Safari 字号加倍](evidence/r1/r1-02-safari-font-200.png)。
+
+此补充只验证本次处理器与真实正文，不是正式阅读设计或完整 R1-05 验收；Safari 键盘、320/768/1440 全矩阵及其他排版材料继续留待对应阶段。当前正式 build 只输出最小首页，无文章正文、Markdown 原稿或文章路由；这不替代 R1-06 完整草稿/附件隔离验收。未创建生产部署，未运行线上冒烟，也未把 R1-03 至 R1-08 勾选通过。本阶段实际本地写作检查步骤已记入 [操作记录](runbooks/publishing.md)。
