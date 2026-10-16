@@ -1,0 +1,14 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #202020;
+  background: #faf9f6;
+  line-height: 1.7;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  line-height: 1.25;
+}

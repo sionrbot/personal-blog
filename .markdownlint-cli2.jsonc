@@ -1,0 +1,19 @@
+{
+  "globs": ["**/*.md", ".github/**/*.md"],
+  "ignores": [
+    "node_modules/**",
+    ".tools/**",
+    "dist/**",
+    ".astro/**",
+    ".cache/**",
+    "test-results/**",
+    "playwright-report/**",
+  ],
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD024": { "siblings_only": true },
+    "MD033": false,
+    "MD060": false,
+  },
+}
